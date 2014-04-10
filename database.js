@@ -3,6 +3,10 @@ var usernames = new Array();
 var passwords = new Array();
 var permissions = new Array();
 
+usernames[0] = "garrett";
+passwords[0] = "password";
+permissions[0] = "1";
+
 
 var filenames = new Array();
 var filePermissions = new Array();

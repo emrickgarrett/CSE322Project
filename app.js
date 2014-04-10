@@ -3,7 +3,7 @@ var app = express();
 
 //Create a static file server
 app.configure(function() {
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + "/public"));
   app.use(express.json());
   app.use(express.urlencoded());
 });
