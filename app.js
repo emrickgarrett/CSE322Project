@@ -34,7 +34,8 @@ res.send(200);
 
 app.get("/getFiles", function(req, res){
 
-res.send(getFiles());
+var permission = req.body['permission'];
+res.send(getFiles(permission));
 
 });
 
@@ -68,20 +69,17 @@ function getPermission(username){
 }
 
 function createUser(username, password, permission){
-	//do stuff
+	database.createUser(username, password, permission);
 }
 
-function getFiles(){
-	//do stuff
+function getFiles(permission){
+	return database.getFiles(permission);
 }
 
 function addFile(filename, permission){
-	//do stuff
+	database.addFile(filename, permission);
 }
 
-
-//Get the dummy data
-//require('./server/ddata.js');
 
 var port = 8080;
 app.listen(port);
