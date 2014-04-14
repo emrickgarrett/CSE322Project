@@ -95,6 +95,5 @@ function printFile(filename, permission){
 		fileDiv.innerHTML = fileDiv.innerHTML + "<span id=" + filename + "> > <a href=" + filename + " style=\"color:grey;background:#efefef;text-decoration:none;font-size:20;\" > " + filename + " </a>" + "<br /></span>";
 	}
 	
-	document.getElementById("content").style.height="500"
 	
 }
