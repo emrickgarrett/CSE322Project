@@ -10,13 +10,24 @@
 <div id="content" style="color:grey; background:#efefef">
 <hr/>
 
-<script>login("clerk", "test");</script>
-
-<p id="department1" onclick="showFileStructure('department1')">First Department Name</p>
-<p id="department2" onclick="showFileStructure('department2')">Second Department Name</p>
-
+<div id="files">
 
 </div>
+
+
+<script>
+	login("citizen", "test");
+	printFile("door", 1);
+	printFile("Egg", 2);
+	printFile("carpet", 3);
+</script>
+	
+<p id="department1" onclick="showFileStructure(department1)">First Department Name</p>
+<p id="department2" onclick="showFileStructure(department2)">Second Department Name</p>
+
+</div>
+
+
 </body>
 
 </html>
