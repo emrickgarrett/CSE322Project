@@ -79,4 +79,6 @@ function printFile(filename, permission){
 		fileDiv.innerHTML = fileDiv.innerHTML + "<br />";
 	}
 	
+	document.getElementById("content").style.height="500"
+	
 }
