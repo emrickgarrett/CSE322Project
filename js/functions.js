@@ -62,7 +62,9 @@ function login(username, password){
 
 //Handle Button Clicks
 function buttonClick(filename){
-//document.getElementById(
+	var fileDiv = document.getElementById("files");
+
+	fileDiv.removeChild(document.getElementById(filename));
 }
 
 
@@ -70,13 +72,11 @@ function buttonClick(filename){
 function printFile(filename, permission){
 	
 	var fileDiv = document.getElementById("files");
-	
-	fileDiv.innerHTML = fileDiv.innerHTML + "> <a href=" + filename + " style=\"color:grey;background:#efefef;text-decoration:none;font-size:20;\" id=" + filename + "> " + filename + " </a>";
-	
+		
 	if(getPermissions() == null || getPermissions() >= permission){
-		fileDiv.innerHTML = fileDiv.innerHTML + "<button onclick=\"buttonClick(" + filename + ");\" id=\"" + filename + "_button\"> <img src=\"images/delete.png\" width=\"5\" height=\"10\"> </button><br/>";
+		fileDiv.innerHTML = fileDiv.innerHTML + "<span id=" + filename + "> > <a href=" + filename + " style=\"color:grey;background:#efefef;text-decoration:none;font-size:20;\" > " + filename + " </a>" + "<button onclick=\"buttonClick('" + filename + "');\" id=\"" + filename + "_button\" > <img src=\"images/delete.png\" width=\"5\" height=\"10\"> </button><br/></span>";
 	}else{
-		fileDiv.innerHTML = fileDiv.innerHTML + "<br />";
+		fileDiv.innerHTML = fileDiv.innerHTML + "<span id=" + filename + "> > <a href=" + filename + " style=\"color:grey;background:#efefef;text-decoration:none;font-size:20;\" > " + filename + " </a>" + "<br /></span>";
 	}
 	
 	document.getElementById("content").style.height="500"
