@@ -52,3 +52,26 @@ function login(username, password){
 		}
 	}
 }
+
+/********************* Print File Script *****************************/
+
+//Handle Button Clicks
+function buttonClick(filename){
+//document.getElementById(
+}
+
+
+//Print the file onto the website
+function printFile(filename, permission){
+	
+	var fileDiv = document.getElementById("files");
+	
+	fileDiv.innerHTML = fileDiv.innerHTML + "> <a href=" + filename + " style=\"color:grey;background:#efefef;text-decoration:none;font-size:20;\" id=" + filename + "> " + filename + " </a>";
+	
+	if(getPermissions() == null || getPermissions() >= permission){
+		fileDiv.innerHTML = fileDiv.innerHTML + "<button onclick=\"buttonClick(" + filename + ");\" id=\"" + filename + "_button\"> <img src=\"images/delete.png\" width=\"5\" height=\"10\"> </button><br/>";
+	}else{
+		fileDiv.innerHTML = fileDiv.innerHTML + "<br />";
+	}
+	
+}
