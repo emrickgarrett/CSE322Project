@@ -28,6 +28,11 @@ function getPassword(){
 	return password;
 }
 
+function showFileStructure(id){
+	document.getElementById(id).innerHTML = "Cat";
+	//document.getElementById(id).innerHTML += '<br>&nbsp&nbsp&nbsp&nbsp<a type="application/pdf" href="./documents/test_document.pdf">Test Document</a><br>';
+	//document.getElementById(firstdepartment).innerHTML += '<br>&nbsp&nbsp&nbsp&nbsp<a type="application/pdf" href="./image/test_image.pdf">Test Image</a><br>';
+}
 
 /********************   Login Script  ******************************/
 
