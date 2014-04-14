@@ -4,6 +4,15 @@ var permissions = 0;
 var username = "";
 var password = "";
 
+var prevtexthash = {};
+prevtexthash["department1"] = '';
+prevtexthash["department2"] = '';
+
+var showflags = {};
+showflags["department1"] = true;
+showflags["department2"] = true;
+
+
 function setPermissions(input){
 	permissions = input
 }
@@ -29,9 +38,16 @@ function getPassword(){
 }
 
 function showFileStructure(id){
-	document.getElementById(id).innerHTML = "Cat";
-	//document.getElementById(id).innerHTML += '<br>&nbsp&nbsp&nbsp&nbsp<a type="application/pdf" href="./documents/test_document.pdf">Test Document</a><br>';
-	//document.getElementById(firstdepartment).innerHTML += '<br>&nbsp&nbsp&nbsp&nbsp<a type="application/pdf" href="./image/test_image.pdf">Test Image</a><br>';
+	if(showflags[id]){
+		showflags[id] = !showflags[id];
+		prevtexthash[id] = document.getElementById(id).innerHTML;
+		document.getElementById(id).innerHTML += 
+		'<br>&nbsp&nbsp&nbsp&nbsp<a type="application/pdf" href="./documents/test_document.pdf" onclick="hideFileStructure(' + id + ')">Test Document</a><br>';
+	}else{
+		showflags[id] = !showflags[id];
+		document.getElementById(id).innerHTML = prevtexthash[id];
+		prevtexthash[id] = '';
+	}
 }
 
 /********************   Login Script  ******************************/
