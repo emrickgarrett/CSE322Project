@@ -7,10 +7,12 @@ var password = "";
 var prevtexthash = {};
 prevtexthash["department1"] = '';
 prevtexthash["department2"] = '';
+prevtexthash["addnewfile"] = '';
 
 var showflags = {};
 showflags["department1"] = true;
 showflags["department2"] = true;
+showflags["addnewfile"] = true;
 
 
 function setPermissions(input){
@@ -37,12 +39,51 @@ function getPassword(){
 	return password;
 }
 
+/********************   Show File Structure Script  ******************************/
+
 function showFileStructure(id){
+	if(!(id in showflags)){
+		
+	}else if(showflags[id]){
+		showflags[id] = !showflags[id];
+		prevtexthash[id] = document.getElementById(id).innerHTML;
+		document.getElementById(id).innerHTML += 
+		'<br>&nbsp&nbsp&nbsp&nbsp' + 
+		//'<input type="button" value="Test File" onclick="showFile('+id+',"./documents/test_document.pdf");">';
+		'<a type="application/pdf" href="./documents/test_document.pdf" onclick="hideFileStructure(' + id + ')">Test Document</a><br>';
+	}else{
+		showflags[id] = !showflags[id];
+		document.getElementById(id).innerHTML = prevtexthash[id];
+		prevtexthash[id] = '';
+	}
+}
+
+function showFile(id, filepath){
 	if(showflags[id]){
 		showflags[id] = !showflags[id];
 		prevtexthash[id] = document.getElementById(id).innerHTML;
 		document.getElementById(id).innerHTML += 
-		'<br>&nbsp&nbsp&nbsp&nbsp<a type="application/pdf" href="./documents/test_document.pdf" onclick="hideFileStructure(' + id + ')">Test Document</a><br>';
+		'<input type="button" value="Back" onclick="showFile('+id+');"' +
+		'<iframe src="' + filepath + '" height="750" width="100%" frameborder="0"></iframe>';
+	}else{
+		showflags[id] = !showflags[id];
+		document.getElementById(id).innerHTML = prevtexthash[id];
+		prevtexthash[id] = '';
+	}
+
+}
+
+/********************   Show File Structure Script  ******************************/
+
+function showAddFileForm(id){
+	if(showflags[id]){
+		showflags[id] = !showflags[id];
+		prevtexthash[id] = document.getElementById(id).innerHTML;
+		document.getElementById(id).innerHTML += 
+		'<form>File Name: <input type="text" name="filename"><br>' +
+		'File Path: <input type="text" name="filepath"><br>' +
+		'<input type="submit" value="Submit" onclick="printFile();">' +
+		'</form>';
 	}else{
 		showflags[id] = !showflags[id];
 		document.getElementById(id).innerHTML = prevtexthash[id];
@@ -85,7 +126,7 @@ function buttonClick(filename){
 
 
 //Print the file onto the website
-function printFile(filename, permission){
+function printFile(file, filename, permission){
 	
 	var fileDiv = document.getElementById("files");
 		
