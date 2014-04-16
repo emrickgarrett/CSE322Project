@@ -50,27 +50,12 @@ function showFileStructure(id){
 		document.getElementById(id).innerHTML += 
 		'<br>&nbsp&nbsp&nbsp&nbsp' + 
 		//'<input type="button" value="Test File" onclick="showFile('+id+',"./documents/test_document.pdf");">';
-		'<a type="application/pdf" href="./documents/test_document.pdf" onclick="hideFileStructure(' + id + ')">Test Document</a><br>';
+		'<input type="button" value="Test File" onclick="createFrame(' + id + ')"><br>';
 	}else{
 		showflags[id] = !showflags[id];
 		document.getElementById(id).innerHTML = prevtexthash[id];
 		prevtexthash[id] = '';
 	}
-}
-
-function showFile(id, filepath){
-	if(showflags[id]){
-		showflags[id] = !showflags[id];
-		prevtexthash[id] = document.getElementById(id).innerHTML;
-		document.getElementById(id).innerHTML += 
-		'<input type="button" value="Back" onclick="showFile('+id+');"' +
-		'<iframe src="' + filepath + '" height="750" width="100%" frameborder="0"></iframe>';
-	}else{
-		showflags[id] = !showflags[id];
-		document.getElementById(id).innerHTML = prevtexthash[id];
-		prevtexthash[id] = '';
-	}
-
 }
 
 /********************   Show File Structure Script  ******************************/
@@ -89,6 +74,45 @@ function showAddFileForm(id){
 		document.getElementById(id).innerHTML = prevtexthash[id];
 		prevtexthash[id] = '';
 	}
+}
+
+/******************* Document Viewing Scripts *************************/
+
+
+function createFrame(id){
+			
+	if(document.getElementById("document_frame") != null){
+		var element = document.getElementById("document_frame");
+		element.parentNode.removeChild(element);
+	}
+			
+		  var ifrm = document.createElement("IFRAME"); 
+		  ifrm.setAttribute("src", "./documents/test_document.pdf"); 
+		  ifrm.setAttribute("id", "document_frame");
+		  ifrm.style.width = 640+"px"; 
+		  ifrm.style.height = 480+"px"; 
+		  document.body.appendChild(ifrm); 
+		  
+		  document.body.innerHTML = document.body.innerHTML + "<br />";
+		  
+		  var remove_button = document.createElement("INPUT");
+		  remove_button.setAttribute("type", "button");
+		  remove_button.setAttribute("onclick", "removeFrame()");
+		  remove_button.setAttribute("id", "remove_button");
+		  remove_button.setAttribute("value", "Hide");
+		  document.body.appendChild(remove_button);
+		  
+}
+
+function removeFrame(){
+
+	if(document.getElementById("document_frame") != null){
+		var element = document.getElementById("document_frame");
+		element.parentNode.removeChild(element); 
+		element = document.getElementById("remove_button");
+		element.parentNode.removeChild(element);
+	}
+
 }
 
 /********************   Login Script  ******************************/
