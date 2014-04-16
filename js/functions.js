@@ -85,6 +85,10 @@ function createFrame(id){
 		var element = document.getElementById("document_frame");
 		element.parentNode.removeChild(element);
 	}
+	if(document.getElementById("remove_button") != null){
+		var element = document.getElementById("remove_button");
+		element.parentNode.removeChild(element);
+	}
 			
 		  var ifrm = document.createElement("IFRAME"); 
 		  ifrm.setAttribute("src", "./documents/test_document.pdf"); 
@@ -109,7 +113,7 @@ function removeFrame(){
 	if(document.getElementById("document_frame") != null){
 		var element = document.getElementById("document_frame");
 		element.parentNode.removeChild(element); 
-		element = document.getElementById("remove_button");
+		var element = document.getElementById("remove_button");
 		element.parentNode.removeChild(element);
 	}
 
